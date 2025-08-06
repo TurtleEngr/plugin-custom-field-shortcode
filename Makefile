@@ -1,8 +1,13 @@
 # $Header$
 
+mBuildList = \
+    dist/custom-field-shortcode/readme.txt \
+    dist/custom-field-shortcode/custom-field-shortcode.php
+
 # --------------------
 
-build : clean VERSION custom-field-shortcode/readme.txt
+build : clean VERSION $(mBuildList)
+
 
 package : dist/custom-field-shortcode.zip
 
@@ -17,6 +22,12 @@ dist :
 dist/custom-field-shortcode.zip : build dist
 	incver.sh -m
 	zip -r $@ custom-field-shortcode
+
+dist/custom-field-shortcode/readme.txt : custom-field-shortcode/readme.txt
+	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
+
+dist/custom-field-shortcode/custom-field-shortcode.php : custom-field-shortcode/custom-field-shortcode.php
+	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
 
 custom-field-shortcode/readme.txt : README.md
 	-cp $? $@
