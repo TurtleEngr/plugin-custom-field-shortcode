@@ -6,7 +6,7 @@ mBuildList = \
 
 # --------------------
 
-build : clean VERSION $(mBuildList)
+build : clean VERSION dist $(mBuildList)
 
 
 package : dist/custom-field-shortcode.zip
@@ -16,7 +16,9 @@ clean :
 
 # --------------------
 
-dist :
+dist : dist/custom-field-shortcode
+
+dist/custom-field-shortcode :
 	mkdir -p $@
 
 dist/custom-field-shortcode.zip : build dist
