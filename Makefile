@@ -24,7 +24,7 @@ dist/custom-field-shortcode :
 dist/custom-field-shortcode.zip : build dist
 	incver.sh -m
 	-rm $@
-	cd dist; zip -r $@ custom-field-shortcode
+	cd dist; zip -r custom-field-shortcode.zip custom-field-shortcode
 
 dist/custom-field-shortcode/readme.txt : custom-field-shortcode/readme.txt
 	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
