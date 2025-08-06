@@ -2,8 +2,7 @@
 /*
 Plugin Name: Custom Field Shortcode
 Plugin URI: https://github.com/TurtleEngr/plugin-custom-field-shortcode
-Description: Place custom fields anywhere in your post content. Put this in
-the shortcode: [custom_field field="your-custom-field-name"]
+Description: Place custom fields anywhere in your post content.
 Version: VERSION
 Author: Bruce Rafnel
 Author URI: https://github.com/TurtleEngr
@@ -13,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /* Lock out script kiddies: die an direct call */
-defined( 'ABSPATH' ) or die;
+/* defined( 'ABSPATH' ) or die; */
 
 /* Add the shortcode */
 function custom_field_shortcode($atts) {

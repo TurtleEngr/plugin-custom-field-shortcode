@@ -5,9 +5,9 @@ Contributors: Bruce Rafnel
 
 Tags: plugin, shortcode, custom-fields
 
-Requires at least: 6.0 ?
+Requires at least: 6.0
 
-Tested up to: 6.2 ?
+Tested up to: 6.2
 
 Stable tag: VERSION
 
