@@ -40,7 +40,7 @@ that are available to the post. To see the custom fields that are
 available, select the "..." menu option Preferences, section General,
 Advanced, turn on "Custom fields"
 
-HTML can be put around the [] text and multip [] fields can be
+HTML can be put around the [] text and multiple [] fields can be
 added. For example:
 
 > <p>[custom~field field="usp-custom-subtitle"]</p>
