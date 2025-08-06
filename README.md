@@ -1,9 +1,6 @@
 custom-field-shortcode
 ======================
 
-custom-field-shortcode
-----------------------
-
 Contributors: Bruce Rafnel
 
 Tags: plugin, shortcode, custom-fields
@@ -33,25 +30,25 @@ Installation
 How do I use this plugin?
 -------------------------
 
-In your post\'s content add shortcode \"`custom_field`.\" In the
-shortcode\'s field add:
+In your post's content add shortcode "custom_field." In the
+shortcode's field add:
 
-> `[custom_field` field=\"your-custom-field-name\"\]
+> [custom_field field="your-custom-field-name"]
 
-Replace \"your-custom-field-name\" with one of the custom field name
+Replace "your-custom-field-name" with one of the custom field name
 that are available to the post. To see the custom fields that are
-available, select the \"...\" menu option Preferences, section General,
-Advanced, turn on \"Custom fields\"
+available, select the "..." menu option Preferences, section General,
+Advanced, turn on "Custom fields"
 
-HTML can be put around the \[\] text and multip \[\] fields can be
+HTML can be put around the [] text and multip [] fields can be
 added. For example:
 
-> *=\[custom~field~= field=\"usp-custom-subtitle\"\]*
+> <p>[custom~field field="usp-custom-subtitle"]</p>
 >
-> by `[custom_field` field=\"usp-custom-author\"\]
+> <p>by [custom_field field="usp-custom-author"]</p>
 >
-> Link: [`[custom_field`
-> field=\"usp-custom-link\"\]](%3Ccode%3E%5Bcustom_field%3C/code%3E%20field=%22usp-custom-link%22%5D)
+> <p>Link: [custom_field field="usp-custom-link"]>
+> [custom_field field="usp-custom-link"]</p>
 
 How to uninstall the plugin?
 ----------------------------
