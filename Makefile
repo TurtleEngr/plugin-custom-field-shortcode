@@ -15,13 +15,8 @@ mRelRel = /rel/released/software/own/$(mProj)
 
 # --------------------
 
-build : clean package
-
-package : $(mProduct)
-
-update :
-	git co develop
-	git pull origin develop
+build : clean incPatch
+	$(MAKE) $(mProduct)
 
 save : update incMinor build
 	git ci -am Updated
@@ -37,6 +32,10 @@ publish release : incMajor save
 	git co develop
 	rsync -a $(mPubList) $(mServer):$(mRelRel)
 
+update :
+	git co develop
+	git pull origin develop
+
 clean :
 	-find . -type f -name '*~' -exec rm {} \;
 
@@ -46,7 +45,10 @@ dist-clean : clean
 # --------------------
 
 VERSION :
-	echo '1.0.0' >$@
+	echo '0.0.0' >$@
+
+incPatch : VERSION
+	incver.sh -p
 
 incMinor : VERSION
 	incver.sh -m
@@ -56,7 +58,6 @@ incMajor : VERSION
 
 
 $(mProduct) : $(mBuildList)
-	incver.sh -p
 	-rm $@
 	cd dist; zip -r custom-field-shortcode.zip custom-field-shortcode
 
@@ -65,11 +66,11 @@ $(mProduct) : $(mBuildList)
 dist/custom-field-shortcode :
 	mkdir -p $@
 
-dist/custom-field-shortcode/readme.txt : custom-field-shortcode/readme.txt
-	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
+dist/custom-field-shortcode/readme.txt : VERSION custom-field-shortcode/readme.txt
+	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/readme.txt >$@
 
-dist/custom-field-shortcode/custom-field-shortcode.php : custom-field-shortcode/custom-field-shortcode.php
-	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
+dist/custom-field-shortcode/custom-field-shortcode.php : VERSION custom-field-shortcode/custom-field-shortcode.php
+	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/custom-field-shortcode.php >$@
 
 custom-field-shortcode/readme.txt : README.md
 	-cp $? $@
