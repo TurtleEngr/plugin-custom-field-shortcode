@@ -31,7 +31,7 @@ save : update incMinor build
 	git ci -am Updated
 	git push origin develop
 	-ssh $(mServer) mkdir -p $(mPubDev)
-	rsync -a $(mPubList) $(mServer):$(mPubDev)
+	rsync -a $(mProduct) $(mServer):$(mPubDev)
 	@echo 'If OK, make publish'
 
 publish release : incMajor save 
@@ -43,7 +43,7 @@ publish release : incMajor save
 	git push --tags origin main
 	git co develop
 	-ssh $(mServer) mkdir -p $(mPubRel)
-	rsync -a $(mPubList) $(mServer):$(mPubRel)
+	rsync -a $(mProduct) $(mServer):$(mPubRel)
 	@echo 'If done, make dist-clean'
 
 update :
