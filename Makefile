@@ -4,6 +4,7 @@ mProj = plugin-custom-field-shortcode
 mProduct = dist/custom-field-shortcode.zip
 
 mBuildList = \
+    VERSION \
     dist/custom-field-shortcode \
     dist/custom-field-shortcode/readme.txt \
     dist/custom-field-shortcode/custom-field-shortcode.php
@@ -14,7 +15,7 @@ mRelRel = /rel/released/software/own/$(mProj)
 
 # --------------------
 
-build : clean incPatch package
+build : clean package
 
 package : $(mProduct)
 
@@ -47,9 +48,6 @@ dist-clean : clean
 VERSION :
 	echo '1.0.0' >$@
 
-incPath : VERSION
-	incver.sh -p
-
 incMinor : VERSION
 	incver.sh -m
 
@@ -58,6 +56,7 @@ incMajor : VERSION
 
 
 $(mProduct) : $(mBuildList)
+	incver.sh -p
 	-rm $@
 	cd dist; zip -r custom-field-shortcode.zip custom-field-shortcode
 
