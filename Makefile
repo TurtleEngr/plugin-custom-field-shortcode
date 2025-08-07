@@ -1,4 +1,12 @@
-# $Header$
+# Makefile for github.com:TurtleEngr/plugin-custom-field-shortcode
+
+# Typical workflow
+# make update - get latest version from github
+# make build - incPatch, $(mProduct), check
+# make save - update, incMinor, build, ci, push develop to github,
+#             copy to PubDev
+# make publish - incMajor, save, tag, ci, push to develop, merge to
+#                main, push to main, copy to PubRel
 
 mProj = plugin-custom-field-shortcode
 mProduct = dist/custom-field-shortcode.zip
@@ -10,17 +18,21 @@ mBuildList = \
     dist/custom-field-shortcode/custom-field-shortcode.php
 
 mServer = moria.whyayh.com
-mRelDev = /rel/development/software/own/$(mProj)
-mRelRel = /rel/released/software/own/$(mProj)
+mPubDev = /rel/development/software/own/$(mProj)
+mPubRel = /rel/released/software/own/$(mProj)
 
 # --------------------
 
 build : clean incPatch
 	$(MAKE) $(mProduct)
+	@echo 'If OK, make save'
 
 save : update incMinor build
 	git ci -am Updated
 	git push origin develop
+	-ssh $(mServer) mkdir -p $(mPubDev)
+	rsync -a $(mPubList) $(mServer):$(mPubDev)
+	@echo 'If OK, make publish'
 
 publish release : incMajor save 
 	git tag -f -F VERSION "v$$(cat VERSION)"
@@ -30,7 +42,9 @@ publish release : incMajor save
 	git merge develop
 	git push --tags origin main
 	git co develop
-	rsync -a $(mPubList) $(mServer):$(mRelRel)
+	-ssh $(mServer) mkdir -p $(mPubRel)
+	rsync -a $(mPubList) $(mServer):$(mPubRel)
+	@echo 'If done, make dist-clean'
 
 update :
 	git co develop
