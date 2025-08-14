@@ -90,5 +90,5 @@ dist/custom-field-shortcode/readme.txt : VERSION custom-field-shortcode/readme.t
 dist/custom-field-shortcode/custom-field-shortcode.php : VERSION custom-field-shortcode/custom-field-shortcode.php
 	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/custom-field-shortcode.php >$@
 
-custom-field-shortcode/readme.txt : README.md
-	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
+custom-field-shortcode/readme.txt : VERSION README.md
+	sed "s/VERSION/$$(cat VERSION)/" <README.md >$@
