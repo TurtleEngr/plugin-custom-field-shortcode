@@ -23,7 +23,8 @@ Place custom fields anywhere in your post content.
 Installation
 ------------
 
-1. Get the custom-field-shortcode.zip file from https://moria.whyayh.com/rel/released/software/own/plugin-custom-field-shortcode/
+1. Get the custom-field-shortcode.zip file from
+   https://moria.whyayh.com/rel/released/software/own/plugin-custom-field-shortcode/
 2. Use Add Plugins, Upload Plugin, custom-field-shortcode.zip
 3. Activate the plugin
 
@@ -58,6 +59,10 @@ Simply deactivate and delete the plugin.
 Changelog
 ---------
 
-### 1.0 {#section-1}
+### 1.3.1
 
--   Plugin released.
+- Changed the version numbering
+
+### 1.0
+
+- First version

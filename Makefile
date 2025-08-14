@@ -23,18 +23,18 @@ mPubRel = /rel/released/software/own/$(mProj)
 
 # --------------------
 
-build : clean incPatch
+build : clean
 	$(MAKE) $(mProduct)
 	@echo 'If OK, make save'
 
-save : update incMinor build
+save : update incPatch build
 	git ci -am Updated
 	git push origin develop
 	-ssh $(mServer) mkdir -p $(mPubDev)
 	rsync -a $(mProduct) $(mServer):$(mPubDev)
 	@echo 'If OK, make publish'
 
-publish release : incMajor save 
+publish release : incMinor save 
 	git tag -f -F VERSION "v$$(cat VERSION)"
 	git push --tags origin develop
 	git co main
@@ -58,9 +58,6 @@ dist-clean : clean
 
 # --------------------
 
-VERSION :
-	echo '0.0.0' >$@
-
 incPatch : VERSION
 	incver.sh -p
 
@@ -70,12 +67,14 @@ incMinor : VERSION
 incMajor : VERSION
 	incver.sh -M
 
-
 $(mProduct) : $(mBuildList)
 	-rm $@
 	cd dist; zip -r custom-field-shortcode.zip custom-field-shortcode
 
 # mBuildList
+
+VERSION :
+	echo '0.0.0' >$@
 
 dist/custom-field-shortcode :
 	mkdir -p $@
