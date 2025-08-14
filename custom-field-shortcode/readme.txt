@@ -9,7 +9,7 @@ Requires at least: 6.0
 
 Tested up to: 6.8.2
 
-Stable tag: v1.1.2
+Stable tag: v1.2.1
 
 License: GPLv2 or later
 
