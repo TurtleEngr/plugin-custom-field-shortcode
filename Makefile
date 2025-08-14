@@ -85,7 +85,7 @@ dist/custom-field-shortcode :
 	mkdir -p $@
 
 dist/custom-field-shortcode/readme.txt : VERSION custom-field-shortcode/readme.txt
-	-cp $? $@
+	-cp custom-field-shortcode/readme.txt $@
 
 dist/custom-field-shortcode/custom-field-shortcode.php : VERSION custom-field-shortcode/custom-field-shortcode.php
 	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/custom-field-shortcode.php >$@
