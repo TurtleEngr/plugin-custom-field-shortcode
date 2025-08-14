@@ -1,0 +1,22 @@
+* Plugin Help
+** Making Plugins
++ https://www.wpbeginner.com/wp-tutorials/how-to-create-a-wordpress-plugin/
++ https://www.hostinger.com/tutorials/how-to-create-wordpress-plugin
+
++ https://make.wordpress.org/core/handbook/best-practices/coding-standards/
++ https://developer.wordpress.org/plugins/plugin-basics/
++ https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
++ https://developer.wordpress.org/plugins/plugin-basics/best-practices/
+
+** Claude Question
+Given these guidelines for writing WordPress plugins:
+https://make.wordpress.org/core/handbook/best-practices/coding-standards/
+https://developer.wordpress.org/plugins/plugin-basics/
+https://developer.wordpress.org/plugins/plugin-basics/header-requirements/
+https://developer.wordpress.org/plugins/plugin-basics/best-practices/
+Review the plugin code at:
+https://github.com/TurtleEngr/plugin-custom-field-shortcode
+and suggest improvements for the code.
+
+*** Answer
+- See fixup.org
