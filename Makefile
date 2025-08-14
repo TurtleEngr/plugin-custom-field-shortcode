@@ -38,7 +38,7 @@ publish release : incMinor save
 	git tag -f -F VERSION "v$$(cat VERSION)"
 	git push --tags origin develop
 	git co main
-	git pull origin main
+	git pull --tags origin main
 	git merge develop
 	git push --tags origin main
 	git co develop
@@ -48,13 +48,18 @@ publish release : incMinor save
 
 update :
 	git co develop
-	git pull origin develop
+	git pull --tags origin develop
 
 clean :
 	-find . -type f -name '*~' -exec rm {} \;
 
 dist-clean : clean
 	rm -rf dist
+
+
+# To remove tags: local and remote
+# git tag -d v2.1.1
+# git push origin --delete v2.1.1
 
 # --------------------
 
@@ -80,10 +85,10 @@ dist/custom-field-shortcode :
 	mkdir -p $@
 
 dist/custom-field-shortcode/readme.txt : VERSION custom-field-shortcode/readme.txt
-	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/readme.txt >$@
+	-cp $? $@
 
 dist/custom-field-shortcode/custom-field-shortcode.php : VERSION custom-field-shortcode/custom-field-shortcode.php
 	sed "s/VERSION/$$(cat VERSION)/" <custom-field-shortcode/custom-field-shortcode.php >$@
 
 custom-field-shortcode/readme.txt : README.md
-	-cp $? $@
+	sed "s/VERSION/$$(cat VERSION)/" <$? >$@
